@@ -15,4 +15,7 @@ module.exports = {
     extend: {},
   },
   plugins: [],
+  corePlugins: {
+     flex: true,
+  }
 }

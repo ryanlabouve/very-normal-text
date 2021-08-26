@@ -761,6 +761,14 @@ $: {
 }
 </script>
 
+<div class="flex flex-row py-2 px-2">
+  <div class="flex-grow">
+    Very Normal Text
+  </div>
+  <div>
+    Contribute <a href="https://github.com/ryanlabouve/very-normal-text">here</a>!
+  </div>
+</div>
 <div style="height: 100vh" class="rounded-lg bg-gray-200 overflow-hidden shadow divide-y divide-gray-200 sm:divide-y-0 sm:grid sm:grid-cols-2 sm:gap-px">
   <div class="rounded-tl-lg rounded-tr-lg sm:rounded-tr-none relative group bg-white p-6">
     
