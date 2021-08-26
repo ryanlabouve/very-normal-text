@@ -1,6 +1,7 @@
 <script lang="ts">
-let veryNormalText='';
-let veryNormalTextRaw='';
+import './tailwind.css';
+import {onMount} from "svelte"
+
     // "$",
     // "e",
     // "¢",
@@ -191,12 +192,6 @@ let veryNormalTextRaw='';
     // "Ŷ",
     // "ŷ",
     // "Ÿ",
-    // "Ź",
-    // "ź",
-    // "Ż",
-    // "ż",
-    // "Ž",
-    // "ž",
     // "ſ",
     // "U+0180",
     // "Ɓ",
@@ -485,7 +480,7 @@ let veryNormalTextRaw='';
     // "ˢ",
     // "ˣ",
     // "ˤ",
-    // "˥",
+    // "",
     // "˦",
     // "˧",
     // "˨",
@@ -709,7 +704,7 @@ let veryNormalTextRaw='';
     // "Ъ",
     // "Ы",
     // "",
-let charMap = {
+const charMap = {
   "a": "ÀÁÂÃÄÅ⚠♠ⓐ∀ӓӒӑӐ".split(''),
   "b": "ßҍѣѢьвЬ".split(''),
   "c": "©ÇӷӶҫ".split(''),
@@ -721,7 +716,7 @@ let charMap = {
   "i": "ÌÍÎÏӀї".split(''),
   "j": "j".split(''),
   "k": "ⓀӄӃҡҠќк".split(''),
-  "l": "╰⎰ӏ".split(''),
+  "l": "⎰˥ӏ".split(''),
   "m": "ӎӍм".split(''),
   "n": "ÑӥӤӣӢ".split(''),
   "o": "ÒÓÔÕÖØ0⛀☐◴◷◕◒ӫӧӦфѳ".split(''),
@@ -735,12 +730,19 @@ let charMap = {
   "w": "ѡщш".split(''),
   "x": "אּӿӾӽӼӝ".split(''),
   "y": "ÝӳӲӱӰӯӌӋѱ".split(''),
-  "z": "z".split(''),
+  "z": "ŹźŻżŽž".split(''),
   " ": [" "]
 }
 
+let veryNormalTextRaw;
+let veryNormalText;
+
+onMount(() => {
+  veryNormalTextRaw="sample very boring text"
+})
+
 function transformNormalText(text) {
-  if (text == "") {
+  if (!text) {
     return;
   }
 
@@ -759,9 +761,34 @@ $: {
 }
 </script>
 
-<div>
-  <input placeholder="Input some very normal text" bind:value={veryNormalTextRaw} />
-</div>
-<div>
-  {veryNormalText}
+<div style="height: 100vh" class="rounded-lg bg-gray-200 overflow-hidden shadow divide-y divide-gray-200 sm:divide-y-0 sm:grid sm:grid-cols-2 sm:gap-px">
+  <div class="rounded-tl-lg rounded-tr-lg sm:rounded-tr-none relative group bg-white p-6">
+    
+    <div class="mt-8">
+      <h3 class="text-lg font-medium">
+        Boring text here
+      </h3>
+      <p class="mt-2 text-sm text-gray-500">
+        <textarea style="height: 100vh; width: 100%" class="p-3" placeholder="Input some very normal text" bind:value={veryNormalTextRaw} />
+      </p>
+    </div>
+    
+  </div>
+
+  <div class="sm:rounded-tr-lg relative group bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+    <div>
+      
+    </div>
+    <div class="mt-8">
+      <h3 class="text-lg font-medium">
+        Less boring text here
+      </h3>
+      <pre>
+        <p class="mt-2 text-sm text-gray-500">
+          {veryNormalText}
+        </p>
+      </pre>
+    </div>
+    
+  </div>
 </div>
